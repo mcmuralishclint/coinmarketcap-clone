@@ -1,4 +1,5 @@
 const express = require('express')
+const dotenv = require('dotenv').config()
 const indexRouter = require('./routes/indexRouter.js')
 const ejs = require('ejs')
 
@@ -11,7 +12,7 @@ app.set('view engine','ejs')
 //routes
 app.use('/',indexRouter)
 
-const PORT = 5000
+const PORT = 3000
 app.listen(PORT || process.env.PORT,()=>{
-    console.log("Server Initiated")
+    console.log("Server Initiated at port: " + process.env.PORT)
 })

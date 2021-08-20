@@ -21,7 +21,7 @@ router.get('/:slug',(req,res)=>{
     //get info from the API
     response = bitcoin
     //return
-    if(coin.length>0  ){
+    if(coin.length>0){
         // coinfInfo = getCoinData(id).data[id]
         // ---------Mocking API calls---------- 
         // requestOptions = getCoinData(id)
@@ -30,6 +30,7 @@ router.get('/:slug',(req,res)=>{
         // }).catch((err) => {
         //     res.render('../templates/single_coin',{coin:coin[0]})
         // });
+        id = 1 //Remove this
         res.render('../templates/single_coin',{coin:coin[0],coinInfo:response.data[id]})
     }else{
         res.send("The coin you're searching for is not in our database")
