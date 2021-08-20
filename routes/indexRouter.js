@@ -3,19 +3,15 @@ const dotenv = require('dotenv').config()
 const coinData = require('../cmcCoins.json') //Mock coin index API call
 const bitcoin = require('../bitcoin.json') //Mock coin detail API call
 const rp = require('request-promise');
+const paginate = require('../paginate_middleware');
 
 var router = express.Router()
 
 user = 'Muralish'
 const coins = coinData.data
 
-router.get('/',(req,res)=>{
-    const page = req.query.page
-    const limit = 5
-    const startIndex = (page-1)*limit
-    const endIndex = page*limit
-    const paginated_coins = coins.slice(startIndex,endIndex)
-    res.render('../templates/index',{user:user,coins:paginated_coins})
+router.get('/',paginate(coins),(req,res)=>{
+    res.render('../templates/index',{user:user,coins:res.paginatedResult.results})
 })
 
 router.get('/:slug',(req,res)=>{ 
