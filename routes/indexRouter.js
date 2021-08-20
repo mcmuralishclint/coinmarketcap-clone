@@ -7,10 +7,15 @@ const rp = require('request-promise');
 var router = express.Router()
 
 user = 'Muralish'
-coins = coinData.data
+const coins = coinData.data
 
 router.get('/',(req,res)=>{
-    res.render('../templates/index',{user:user,coins:coins})
+    const page = req.query.page
+    const limit = 5
+    const startIndex = (page-1)*limit
+    const endIndex = page*limit
+    const paginated_coins = coins.slice(startIndex,endIndex)
+    res.render('../templates/index',{user:user,coins:paginated_coins})
 })
 
 router.get('/:slug',(req,res)=>{ 
