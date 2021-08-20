@@ -1,4 +1,5 @@
 const express = require('express')
+const dotenv = require('dotenv').config()
 const coinData = require('../cmcCoins.json') //Mock coin index API call
 const bitcoin = require('../bitcoin.json') //Mock coin detail API call
 const rp = require('request-promise');
@@ -45,7 +46,7 @@ function getCoinData(id){
           'id': id
         },
         headers: {
-          'X-CMC_PRO_API_KEY': 'be115139-b6c9-43cc-8712-ac9e0162291c'
+          'X-CMC_PRO_API_KEY': process.env.CMC_API_KEY
         },
         json: true,
         gzip: true
