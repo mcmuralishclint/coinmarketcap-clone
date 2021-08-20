@@ -11,7 +11,7 @@ app.set('view engine','ejs')
 //routes
 app.use('/',indexRouter)
 
-const PORT = 3000
+const PORT = 5000
 app.listen(PORT || process.env.PORT,()=>{
     console.log("Server Initiated")
 })

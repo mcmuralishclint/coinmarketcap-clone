@@ -1,15 +1,13 @@
-var express = require('express')
-const path = require('path');
+const express = require('express')
+const coinData = require('../cmcCoins.json')
+
 var router = express.Router()
-const ejs = require('ejs')
+
+user = 'Muralish'
+coins = coinData.data
 
 router.get('/',(req,res)=>{
-    //res.sendFile(path.join(__dirname,'../templates/index.html'))
-    res.render('../templates/index')
-})
-
-router.get('/about',(req,res)=>{
-    res.send('About')
+    res.render('../templates/index',{user:user,coins:coins})
 })
 
 module.exports = router
