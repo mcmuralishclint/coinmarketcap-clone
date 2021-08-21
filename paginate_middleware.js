@@ -1,7 +1,7 @@
 function paginate(model){
     return(req,res,next)=>{
         const page = req.query.page || 1
-        const limit = 5
+        const limit = 10
         const startIndex = (page-1)*limit
         const endIndex = page*limit
         

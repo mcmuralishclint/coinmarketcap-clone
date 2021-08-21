@@ -24,7 +24,6 @@ router.get('/:slug',(req,res)=>{
     response = bitcoin
     //return
     if(coin.length>0){
-        // coinfInfo = getCoinData(id).data[id]
         // ---------Mocking API calls---------- 
         // requestOptions = getCoinData(id)
         // rp(requestOptions).then(response => {
