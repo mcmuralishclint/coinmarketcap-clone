@@ -1,6 +1,7 @@
 const express = require('express')
 const dotenv = require('dotenv').config()
 const indexRouter = require('./routes/indexRouter.js')
+const coinRouter = require('./routes/coinRouter.js')
 const ejs = require('ejs')
 
 //init express
@@ -10,6 +11,7 @@ app.use(express.static('public'))
 //set view engine to ejs
 app.set('view engine','ejs')
 //routes
+app.use('/ourpicks',coinRouter)
 app.use('/',indexRouter)
 
 const PORT = 3000
