@@ -6,6 +6,8 @@ const ejs = require('ejs')
 
 //init express
 app = express()
+//json
+app.use(express.json())
 //render static file
 app.use(express.static('public'))
 //set view engine to ejs
