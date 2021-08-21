@@ -10,7 +10,7 @@ var db = mongoose.connection;
 
 router.get('/',async(req,res)=>{
     const coins = await Coin.find({})
-    res.send(coins)
+    res.json(coins)
 })
 
 router.post('/',async(req,res)=>{
@@ -25,9 +25,9 @@ router.post('/',async(req,res)=>{
     })
     try{
         var result = await coin.save()
-        res.send(result)
+        res.json(result)
     }catch(err){
-        res.send(err)
+        res.status(404).send(err)
     }
 })
 
@@ -35,7 +35,15 @@ router.put('/',async(req,res)=>{
     const filter = {name: req.body.name}
     const update = {ticker: req.body.ticker}
     var result = await Coin.findOneAndUpdate(filter,update)
-    res.send(result)
+    res.json(result)
+})
+
+router.delete('/',async(req,res)=>{
+    var _id = req.body.id
+    var coin = await Coin.findOne({_id:_id})
+    if(!coin) return res.status(404).json({})
+    const result = await Coin.deleteOne({_id:_id})
+    res.json({_id:_id})
 })
 
 module.exports = router
