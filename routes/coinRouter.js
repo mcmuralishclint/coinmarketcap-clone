@@ -27,7 +27,7 @@ router.post('/',async(req,res)=>{
         var result = await coin.save()
         res.json(result)
     }catch(err){
-        res.status(404).send(err)
+        res.status(404).send(err.message)
     }
 })
 
