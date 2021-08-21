@@ -31,4 +31,11 @@ router.post('/',async(req,res)=>{
     }
 })
 
+router.put('/',async(req,res)=>{
+    const filter = {name: req.body.name}
+    const update = {ticker: req.body.ticker}
+    var result = await Coin.findOneAndUpdate(filter,update)
+    res.send(result)
+})
+
 module.exports = router
